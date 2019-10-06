@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,12 +12,13 @@ const SearchScreen = ({}) => {
   const [results, setResults] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
-  const searchApi = async () => {
+  const searchApi = async (searchTerm) => {
+    console.log('hi there!')
     try {
     const response = await yelp.get('/search', {
       params: {
         limit: 50,
-        term,
+        term: searchTerm,
         location: 'san jose'
       }
     })
@@ -26,15 +27,18 @@ const SearchScreen = ({}) => {
     setErrorMessage('Something Went Wrong')
   }
 }
+  useEffect(() => {
+    searchApi('pasta')
+  }, [])
 
   return(
   <View style={styles.container}>
     <SearchBar
       term={term}
       onTermChange={setTerm}
-      onTermSubmit={searchApi}
+      onTermSubmit={() => searchApi(term)}
       />
-    {errorMessage ? <Text>{errorMessage}</Text> : null} 
+    {errorMessage ? <Text>{errorMessage}</Text> : null}
     <Text>We have found {results.length} results.</Text>
   </View>
 );
