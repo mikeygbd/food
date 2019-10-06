@@ -5,9 +5,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const ResultsList = ({ title }) => (
+const ResultsList = ({ title, results }) => (
   <View style={styles.container}>
     <Text style={styles.title}>{title}</Text>
+    <Text> Results: {results.length}</Text>
   </View>
 );
 
