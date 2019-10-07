@@ -9,7 +9,13 @@ import {
 import ResultDetail from './ResultDetail';
 import {withNavigation} from 'react-navigation';
 
-const ResultsList = ({ title, results, navigation }) => (
+const ResultsList = ({ title, results, navigation }) => {
+
+if (!results.length) {
+  return null 
+}
+
+  return (
   <View style={styles.container}>
     <Text style={styles.title}>{title}</Text>
     <FlatList
@@ -23,11 +29,11 @@ const ResultsList = ({ title, results, navigation }) => (
           <ResultDetail result={item}/>
           </TouchableOpacity>
         )
-
       }}
     />
   </View>
-);
+  )
+}
 
 export default withNavigation(ResultsList);
 
