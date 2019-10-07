@@ -5,9 +5,9 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
-
 } from 'react-native';
 import ResultDetail from './ResultDetail';
+import {withNavigation} from 'react-navigation';
 
 const ResultsList = ({ title, results, navigation }) => (
   <View style={styles.container}>
@@ -29,7 +29,7 @@ const ResultsList = ({ title, results, navigation }) => (
   </View>
 );
 
-export default ResultsList;
+export default withNavigation(ResultsList);
 
 const styles = StyleSheet.create({
   container: {
