@@ -15,6 +15,5 @@ export default RestaurantList;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
   },
 });
